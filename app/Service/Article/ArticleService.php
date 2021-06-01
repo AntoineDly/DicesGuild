@@ -21,7 +21,17 @@ class ArticleService extends BaseService implements IArticleService
     }
     public function findAllArticle()
     {
-        $this->repository->findAllArticle()->toArray();
+        $result = [];
+        $articles = $this->repository->findAllArticle()->toArray();
+        foreach ($articles as $article) {
+            $result[] = [
+                'id' => $article['id'],
+                'name' => $article['name'],
+                'user_name' => $article['users']['name'],
+                'section_name' => $article['section']['name']
+            ];
+        }
+        return $result;
     }
 
     public function createArticle(array $attributes)

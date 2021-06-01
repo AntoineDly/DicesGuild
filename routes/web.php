@@ -34,3 +34,6 @@ Route::get('/createArticle', [ArticleController::class, 'create'])
 ->name('createArticle');
 
 Route::post('/createArticle', [ArticleController::class, 'store']);
+
+Route::get('/articles', [ArticleController::class, 'show'])
+->name('articles');

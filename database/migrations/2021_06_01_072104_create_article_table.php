@@ -21,7 +21,7 @@ class CreateArticleTable extends Migration
             $table->text('article_photo_path')->nullable();
             $table->text('article_text_path')->nullable();
             $table->foreignId('section_id');
-            $table->foreignId('user_id');
+            $table->foreignId('users_id');
             $table->timestamps();
         });
     }

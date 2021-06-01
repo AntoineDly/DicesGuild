@@ -24,6 +24,10 @@
                                 <jet-nav-link :href="route('createArticle')">
                                     Create Article
                                 </jet-nav-link>
+
+                                <jet-nav-link :href="route('articles')">
+                                    Articles
+                                </jet-nav-link>
                             </div>
                         </div>
 

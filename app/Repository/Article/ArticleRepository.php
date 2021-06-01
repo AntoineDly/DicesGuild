@@ -19,11 +19,11 @@ class ArticleRepository extends BaseRepository implements IArticleRepository
 
     public function findAllArticle()
     {
-        $this->model->section->user->all();
+        return $this->model->with('users', 'section')->get();
     }
 
     public function findArticle($id)
     {
-        $this->model->section->user->find($id);
+        $this->model->with('users', 'section')->find($id);
     }
 }

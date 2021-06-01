@@ -23,7 +23,7 @@ class Article extends Model
         return $this->belongsTo(Section::class);
     }
 
-	public function user()
+	public function users()
     {
         return $this->belongsTo(User::class);
     }

@@ -18,9 +18,9 @@ class ArticleController extends Controller
      *      
      * @param IArticleService $articeService      
      */     
-    public function __construct(IArticleService $articeService)     
+    public function __construct(IArticleService $articleService)     
     {         
-        $this->service = $articeService;
+        $this->service = $articleService;
     }
     public function create()
     {
@@ -31,5 +31,11 @@ class ArticleController extends Controller
     {
         $this->service->createArticle($request->all());
         return Inertia::render('Dashboard');
+    }
+
+    public function show()
+    {
+        $articles = $this->service->findAllArticle();
+        return Inertia::render('Article/Articles', ['articles' => $articles]);
     }
 }
