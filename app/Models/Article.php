@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'article';
+
     protected $fillable = [
         'name', 'description', 'keywords'
     ];

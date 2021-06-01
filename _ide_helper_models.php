@@ -14,13 +14,57 @@ namespace App\Models{
 /**
  * App\Models\Article
  *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property string $keywords
+ * @property string|null $article_photo_path
+ * @property string|null $article_text_path
+ * @property int $section_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Section $section
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereArticlePhotoPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereArticleTextPath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereSectionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereUserId($value)
  */
 	class Article extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Membership
+ *
+ * @property int $id
+ * @property int $team_id
+ * @property int $user_id
+ * @property string|null $role
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereRole($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereTeamId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Membership whereUserId($value)
+ * @mixin \Eloquent
+ */
+	class Membership extends \Eloquent {}
 }
 
 namespace App\Models{
