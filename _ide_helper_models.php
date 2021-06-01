@@ -12,25 +12,28 @@
 
 namespace App\Models{
 /**
- * App\Models\Membership
+ * App\Models\Article
  *
- * @property int $id
- * @property int $team_id
- * @property int $user_id
- * @property string|null $role
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Membership newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Membership newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Membership query()
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereRole($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereTeamId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Membership whereUserId($value)
+ * @property-read \App\Models\Section $section
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article query()
  */
-	class Membership extends \Eloquent {}
+	class Article extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Section
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ * @property-read int|null $articles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Section query()
+ */
+	class Section extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -58,6 +61,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Team wherePersonalTeam($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
+ * @mixin \Eloquent
  */
 	class Team extends \Eloquent {}
 }
@@ -82,6 +86,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereTeamId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TeamInvitation whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class TeamInvitation extends \Eloquent {}
 }
@@ -128,6 +133,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
+ * @property-read int|null $articles_count
  */
 	class User extends \Eloquent {}
 }
