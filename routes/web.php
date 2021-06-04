@@ -17,17 +17,21 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Accueil', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('accueil');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/accueil', function () {
+    return Inertia::render('Accueil');
+})->name('accueil');
+
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->name('dashboard');
+})->name('dashboard');*/
 
 // Article
 Route::get('/createArticle', [ArticleController::class, 'create'])
@@ -38,5 +42,5 @@ Route::post('/createArticle', [ArticleController::class, 'store']);
 Route::get('/articles', [ArticleController::class, 'index'])
 ->name('articles');
 
-Route::get('/articles/{id}', [ArticleController::class, 'show'])
+Route::get('/articles/{slug}', [ArticleController::class, 'show'])
 ->name('article');

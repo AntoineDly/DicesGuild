@@ -15,8 +15,17 @@ class Article extends Model
     protected $table = 'article';
 
     protected $fillable = [
-        'name', 'description', 'keywords'
+        'title', 'description', 'keywords', 'slug', 'section_id', 'users_id'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 	
     public function section()
     {

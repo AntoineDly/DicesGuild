@@ -15,13 +15,14 @@ class CreateArticleTable extends Migration
     {
         Schema::create('article', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('description');
             $table->string('keywords');
+            $table->string('slug')->unique()->nullable();
             $table->text('article_photo_path')->nullable();
             $table->text('article_text_path')->nullable();
-            $table->foreignId('section_id');
-            $table->foreignId('users_id');
+            $table->foreignId('section_id')->default(1);
+            $table->foreignId('users_id')->default(1);
             $table->timestamps();
         });
     }

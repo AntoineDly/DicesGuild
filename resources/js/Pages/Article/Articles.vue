@@ -9,12 +9,12 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
                 <div v-for="article in articles" v-bind:key="article.id">
-                    <inertia-link :href="route('article', article.id)" class="text-sm text-gray-700 underline">
+                    <inertia-link :href="route('article', article.slug)" class="text-sm text-gray-700 underline">
 
-                    {{article.name}}
+                    {{article.title}}
                     {{article.user_name}}
                     {{article.section_name}}
-                    <img :src="article.image_url" :alt="article.name" class="rounded-full h-20 w-20 object-cover"/>
+                    <img :src="article.image_url" :alt="article.title" class="rounded-full h-20 w-20 object-cover"/>
                     <div v-html="article.text"></div>
 
                     </inertia-link>

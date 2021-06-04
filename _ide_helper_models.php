@@ -15,9 +15,10 @@ namespace App\Models{
  * App\Models\Article
  *
  * @property int $id
- * @property string $name
+ * @property string $title
  * @property string $description
  * @property string $keywords
+ * @property string|null $slug
  * @property string|null $article_photo_path
  * @property string|null $article_text_path
  * @property int $section_id
@@ -35,8 +36,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereKeywords($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Article whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereSectionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUsersId($value)
  */

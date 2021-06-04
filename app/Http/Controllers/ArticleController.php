@@ -37,12 +37,12 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->service->createArticle($request->all());
-        return Inertia::render('Dashboard');
+        return redirect()->route('accueil');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $article = $this->service->findArticle($id);
+        $article = $this->service->findArticle($slug);
         return Inertia::render('Article/Article', ['article' => $article]);
     }
 }

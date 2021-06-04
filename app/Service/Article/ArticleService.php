@@ -5,9 +5,9 @@ namespace App\Service\Article;
 use App\Models\Article;
 use App\Repository\Article\IArticleRepository;
 use App\Service\Base\BaseService;
-use File;
 use Illuminate\Http\UploadedFile;
 use Storage;
+use Str;
 use Validator;
 
 class ArticleService extends BaseService implements IArticleService
@@ -30,23 +30,24 @@ class ArticleService extends BaseService implements IArticleService
             $text = Storage::get('public/' . $article['article_text_path']);
             $result[] = [
                 'id' => $article['id'],
-                'name' => $article['name'],
+                'title' => $article['title'],
                 'user_name' => $article['users']['name'],
                 'section_name' => $article['section']['name'],
                 'image_url' => $image_url,
                 'text' => $text,
                 'creation_date' => $article['created_at'],
-                'keywords' =>$article['keywords']
+                'keywords' =>$article['keywords'],
+                'slug' => $article['slug']
             ];
         }
         return $result;
     }
 
-    public function findArticle($id)
+    public function findArticle($slug)
     {
         $articles = $this->findAllArticle();
         foreach($articles as $article) {
-            if($article['id'] == $id){
+            if($article['slug'] == $slug){
                 return $article;
             }
         }
@@ -56,7 +57,7 @@ class ArticleService extends BaseService implements IArticleService
     {
 
         Validator::make($attributes, [
-            'name' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
             'keywords' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
@@ -67,6 +68,9 @@ class ArticleService extends BaseService implements IArticleService
         $attributes['user_id'] = 1;
         $attributes['section_id'] = 1;
 
+        // PAS TEMPORAIRE
+        $attributes['slug'] = Str::slug($attributes['title'], '-');
+        
         $article = $this->repository->create($attributes);
 
         if ($attributes['photo'] != '') {

@@ -9,7 +9,7 @@
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
 
-                {{article.name}}
+                {{article.title}}
                 {{article.user_name}}
                 {{article.section_name}}
                 <img :src="article.image_url" :alt="article.name" class="rounded-full h-20 w-20 object-cover"/>
