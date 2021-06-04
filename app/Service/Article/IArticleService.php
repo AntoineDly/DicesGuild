@@ -8,5 +8,7 @@ interface IArticleService extends IBaseService
 {
     public function findAllArticle();
 
+    public function findArticle($id);
+
     public function createArticle(array $attributes);
 }

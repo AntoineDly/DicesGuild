@@ -22,6 +22,13 @@ class ArticleController extends Controller
     {         
         $this->service = $articleService;
     }
+
+    public function index()
+    {
+        $articles = $this->service->findAllArticle();
+        return Inertia::render('Article/Articles', ['articles' => $articles]);
+    }
+
     public function create()
     {
         return Inertia::render('Article/CreateArticle');
@@ -33,9 +40,9 @@ class ArticleController extends Controller
         return Inertia::render('Dashboard');
     }
 
-    public function show()
+    public function show($id)
     {
-        $articles = $this->service->findAllArticle();
-        return Inertia::render('Article/Articles', ['articles' => $articles]);
+        $article = $this->service->findArticle($id);
+        return Inertia::render('Article/Article', ['article' => $article]);
     }
 }

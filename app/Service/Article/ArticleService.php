@@ -5,7 +5,9 @@ namespace App\Service\Article;
 use App\Models\Article;
 use App\Repository\Article\IArticleRepository;
 use App\Service\Base\BaseService;
+use File;
 use Illuminate\Http\UploadedFile;
+use Storage;
 use Validator;
 
 class ArticleService extends BaseService implements IArticleService
@@ -24,14 +26,30 @@ class ArticleService extends BaseService implements IArticleService
         $result = [];
         $articles = $this->repository->findAllArticle()->toArray();
         foreach ($articles as $article) {
+            $image_url = Storage::url($article['article_photo_path']);
+            $text = Storage::get('public/' . $article['article_text_path']);
             $result[] = [
                 'id' => $article['id'],
                 'name' => $article['name'],
                 'user_name' => $article['users']['name'],
-                'section_name' => $article['section']['name']
+                'section_name' => $article['section']['name'],
+                'image_url' => $image_url,
+                'text' => $text,
+                'creation_date' => $article['created_at'],
+                'keywords' =>$article['keywords']
             ];
         }
         return $result;
+    }
+
+    public function findArticle($id)
+    {
+        $articles = $this->findAllArticle();
+        foreach($articles as $article) {
+            if($article['id'] == $id){
+                return $article;
+            }
+        }
     }
 
     public function createArticle(array $attributes)
@@ -42,7 +60,7 @@ class ArticleService extends BaseService implements IArticleService
             'description' => ['required', 'string', 'max:255'],
             'keywords' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'text' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+            'text' => ['nullable', 'mimes:txt', 'max:1024'],
         ])->validateWithBag('createArticle');
 
         // TEMPORAIRE
