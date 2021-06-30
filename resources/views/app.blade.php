@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/avara" type="text/css"/>
 
         <!-- Scripts -->
         @routes

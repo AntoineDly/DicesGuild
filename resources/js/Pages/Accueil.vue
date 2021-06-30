@@ -1,13 +1,57 @@
 <template>
     <app-layout>
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div>
             <!--<div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">-->
             <div v-if="$page.props.user">
-                <welcome />
+                <div class="background">
+                    <div class="entete">Entrez donc cher étranger,<br />bienvenue dans la guilde aux dés !  </div>
+                </div>
+
+                <div class="presentation">
+                    <div class="texte"> 
+                        Rejoignez nous donc en ce lieu pour rencontrer nos autres aventuriers, et pourquoi pas partir ensemble à l’aventure !<br />Mais avant cela, nous allons avoir besoin de savoir à qui nous nous adressons.
+                    </div>
+                    <div class="tavernier"> <img :src="'/storage/images/tavernier.png'"/></div>
+                </div>
+                <div v-if="canLogin" class="connexion">
+                    <div class="categorie">
+                        <div class="texte_connexion">
+                            Alors retirez donc cette capuche que nous puissions vous reconnaitre, 
+                        </div>
+                        <inertia-link :href="route('login')" class="bouton">
+                            Connexion
+                        </inertia-link>
+                    </div>
+                    <div v-if="canRegister" class="categorie">
+                        <div class="texte_connexion">
+                            Ou peut-être est-ce la première fois que vous venez dans notre humble guilde?
+                        </div>
+                        <inertia-link :href="route('register')" class="bouton">
+                            Inscription
+                        </inertia-link>
+                    </div>
+                </div>
+
+                <div class="texte_fin">
+                    Ou peut-être souhaitez vous visiter les lieux et en apprendre plus à notre sujet avant de nous rejoindre,<br />Si c’est le cas, prenez votre temps, je vous retrouverai ici après votre visite ! 
+                </div>
+
+                <div class="construction">
+                    !<br/>Dices’guild est en cours de construction.<br />Suivez notre développement sur la page Nouveautés<br />ou sur les réseaux sociaux: Facebook, Twitter ou Discord
+                </div>
             </div>
-            <!--</div>-->
 
             <template v-else>
+                <div class="background">
+                    <div class="entete">Entrez donc cher étranger,<br />bienvenue dans la guilde aux dés !  </div>
+                </div>
+
+                <div class="presentation">
+                    <div class="texte"> 
+                        Rejoignez nous donc en ce lieu pour rencontrer nos autres aventuriers, et pourquoi pas partir ensemble à l’aventure !<br />Mais avant cela, nous allons avoir besoin de savoir à qui nous nous adressons.
+                    </div>
+                    <div class="tavernier"> <img :src="'/storage/images/tavernier.png'"/></div>
+                </div>
                 <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
                         Log in
@@ -195,3 +239,109 @@
         }
     }
 </script>
+
+<style>
+.entete {
+    font-family: 'AvaraBold';
+    font-size: 40px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    color:#F7E3D4;
+    margin-top: 10%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.background {
+    margin-top: 5%;
+    padding-top: 20%;
+    padding-bottom: 20%;
+    justify-content: center;
+    background-image:url('/storage/images/accueil.png');
+    background-size:100% 100%;
+    width: 100%;
+}
+
+.presentation {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 12%;
+    margin-left: 12%;
+}
+.texte {
+    flex: 25%;
+    font-family: 'Trirong';
+    font-size: 18px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #482C1E;
+    margin-right: 10%;
+    line-height: 2.2;
+}
+.tavernier {
+    width: 50%;
+    min-width: 150px;
+}
+.texte_connexion {
+    font-family: 'Trirong';
+    font-size: 18px;
+    text-align: center;
+    color: #6C422D;
+    line-height: 1.8;
+}
+.connexion {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+.categorie {
+    flex: 10%;
+    display :flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    margin-right: 11%;
+    margin-left: 11%;
+}
+.bouton {
+    flex: 1 25%;
+    margin-top: 4%;
+    color: #6C422D;
+    font-family: "Avara";
+    border-radius: 20px;
+    background-color: #E8AC7D;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    min-width: 150px;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+.texte_fin {
+    text-align: center;
+    font-family: "Trirong";
+    font-size: 18px;
+    color: #482C1E;
+    margin-top: 5%;
+    line-height: 1.8;
+}
+.construction {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    color: #482C1E;
+    font-family: "Trirong";
+    font-size: 15px;
+    background-color: #BFCAD9;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    line-height: 1.8;
+}
+@import "@fontsource/trirong/400.css"
+</style>
