@@ -4,7 +4,7 @@
             <!-- Logo -->
             <div class="logo">
                 <inertia-link :href="route('accueil')">
-                    <img :src="'/storage/images/Logopageaccueil.png'"/>
+                    <img :src="'/storage/images/Logonavbar.png'"/>
                 </inertia-link>
             </div>
 
@@ -130,28 +130,32 @@
 <style scoped>
 .header {
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 .logo {
-    order: 1;
-    margin-top: 2%;
-    width: 15%;
-    min-width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    flex: 25%;
+    width: 20%;
+    min-width: 200px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .nav {
-    order: 2;
-    margin-top: 2%;
+    flex: 75%;
+    margin-left: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .text {
     color: #B25F1F;
     font-family: "Trirong";
     font-size: 16px;
-    margin-right: 1%;
-    margin-left: 1%;
+    margin-right: 2%;
+    margin-left: 2%;
 }
 .footer {
     display:flex;
@@ -182,8 +186,8 @@
 .traitgauche {
     border-left: 1px solid #482C1E;
     padding-left: 5px;
-    margin-top: 4%;
-    margin-bottom: 4%;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 .formulaire {
     display: flex;

@@ -25,9 +25,9 @@ Route::get('/', function () {
     ]);
 })->name('accueil');
 
-/*Route::middleware(['auth:sanctum', 'verified'])->get('/accueil', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/accueil', function () {
     return Inertia::render('Accueil');
-})->name('accueil');*/
+})->name('accueil');
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -44,3 +44,7 @@ Route::get('/articles', [ArticleController::class, 'index'])
 
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])
 ->name('article');
+
+Route::get('/guilde', function () {
+    return Inertia::render('Guilde');
+})->name('guilde');

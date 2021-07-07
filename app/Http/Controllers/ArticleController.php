@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Service\Article\IArticleService;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleController extends Controller
 {
@@ -31,11 +33,18 @@ class ArticleController extends Controller
 
     public function create()
     {
+        if(!Auth::user() OR !Gate::allows('admin-access', Auth::user()) ) {
+            abort(403);
+        }
         return Inertia::render('Article/CreateArticle');
     }
 
     public function store(Request $request)
     {
+        if(!Auth::user() OR !Gate::allows('admin-access', Auth::user()) ) {
+            abort(403);
+        }
+
         $this->service->createArticle($request->all());
         return redirect()->route('accueil');
     }

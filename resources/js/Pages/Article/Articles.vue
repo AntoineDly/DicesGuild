@@ -1,5 +1,5 @@
 <template>
-    <app-layout>
+    <layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Articles
@@ -21,18 +21,18 @@
                 </div>
             </div>
         </div>
-    </app-layout>
+    </layout>
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
+    import layout from '@/Layouts/Layout'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
 
     export default {
         props: ['articles'],
 
         components: {
-            AppLayout,
+            layout,
             JetSectionBorder,
         },
     }
