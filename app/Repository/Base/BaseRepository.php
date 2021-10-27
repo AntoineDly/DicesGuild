@@ -23,7 +23,7 @@ class BaseRepository implements IBaseRepository
 
     public function index()
     {
-        return $this->Model->all();
+        return $this->model->all();
     }
 
     public function create(array $attributes)
